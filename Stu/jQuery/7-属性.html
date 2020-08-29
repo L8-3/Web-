@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			margin: 10px;
+		}
+		.main{
+			border: 10px solid red;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			// var a = $('.one').prop('disabled')
+			// console.log(a)
+			// $('.two').removeAttr('title')
+
+			// $('.two').addClass('main')
+
+			// $('.two').removeClass('main')
+
+			$('div').hasClass('two')
+			// console.log(b)
+		})
+	</script>
+</head>
+<body>
+	<!-- <input class="one" type="text" name="" disabled> -->
+	<div class="one" title="这是第一个div"></div>
+	<div class="two main" title="这是第二个"></div>
+	<div class="two" title="这是第二个"></div>
+</body>
+</html>

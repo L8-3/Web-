@@ -1,0 +1,1894 @@
+1. 架构	
+	大前端，后台，硬件
+2. 开发环境
+	1) 编辑器
+		sublime
+		vscode (*)
+	2) 浏览器
+		firefox 			火狐
+		google chrome 谷歌
+		opera 				欧朋
+3. 部署环境 (购买阿里云)
+	linux (文件操作，vi)
+		1)	虚拟机 
+		2)	云服务器 9.5元/月 
+			阿里云 	
+				轻量应用服务器 	半年
+				区域 	华东（上海）
+				系统镜像
+				ubuntu16.04
+				重置root密码
+			外网ip 
+			root账号	:	root
+			root密码	: 
+	gitee（码云，国产版的github）/github
+		注册账号
+
+4. html
+	1) 超文本标记语言
+		超级文本 （txt 字符类型）
+			文本、图片、视频、音频、超链接...
+		标记 （xml）
+			<div>hello world</div>
+			<h1>你好，世界</h1>
+
+			div 标记"hello world" 为一个普通的块元素的内容
+			h1 	标记 "你好，世界"为一个以及标题的元素的内容
+		语言
+			标记语言
+				xml
+				html
+			编程语言
+				c、java 	强类型编程语言
+				js、php	弱类型的编程语言
+	2) 结构
+		<!Doctype html5>
+		<html>
+			<head>
+				<meta />
+				<link />
+			</head>
+			<body>
+				<div>
+					<span>hello</span>
+				</div>
+				<img/>
+				<h1></h1>
+			</body>
+		</html>
+
+					html
+		head					body
+	meta 	link	div 	img 	h1
+							span
+	3) 语法
+		html由多个标签（元素）组成，标签可以嵌套，树型结构
+
+		元素：
+			双标签元素
+				<标签 属性名=属性值 属性名=属性值 >
+					子标签/内容
+				</标签>
+
+				标签名，属性名不区分大小写（编程习惯要区分）
+				属性值区分大小写，并且可以用引号引起来
+
+				属性:
+					核心属性：绝大多数标签都具有的属性
+						title 	提示
+						id 			唯一标识
+						class 	分类标识
+						style 	内置样式
+					自有属性：只有某些特定的标签才具有的属性
+						a 		href 、target
+						img 	src、alt、width、height
+
+				<div title="hello" id="one"> hello world </div>
+				<div> 
+					<span> hello world </span> 
+				</div>
+
+			单标签元素
+				<标签 />
+
+			注释
+				<!-- 注释内容 -->
+
+5. 代码放哪里？
+	512G 固态 （默认不分区）
+	c:/
+		windows
+		program files
+		program files(x86)
+		...
+		users
+			admin
+			licy
+				图片
+				视频
+				收藏
+				桌面 
+	d:/briup/
+		1-html
+			day01
+		2-css
+		3-linux
+		4-js
+
+6. hello world
+	1） 编写代码
+		hello.html
+	2） 运行代码
+		浏览器
+
+7. 块元素
+	语义化
+
+	作用：
+		搭建网页结构
+	特点：
+		1) 独占一行空间
+		2) 默认宽度为100%
+		3) 高度由子元素或内容决定
+		4) 可以通过css指定其宽度
+	举例说明
+		了解原有特性，去除样式，添加自己的样式
+		
+		div 	无意义的块元素（不知道使用哪个标签的时候就是使用div）
+		html
+		body
+		h1~h6 标题
+		p
+		ul>li
+		ol>li
+		dl>dt,dd
+		
+		H5新增的语义化标签
+		article
+
+
+8. 行内元素	
+	作用：填充
+	特点：
+		与其他行内元素共享一行空间
+		不能通过css为其指定宽高
+		宽高由自身决定，内容的容器
+	标签
+		span 
+		a
+			href:
+				相对地址
+					山西省太原市尖草坪区xxx号3栋202
+					隔壁的201
+				绝对地址
+					山西省太原市尖草坪区xxx号3栋201
+			target
+		img
+		video
+			controls
+			autoplay
+		audio
+		H5过期的语义化标签
+		strong 、i、 em
+
+9. 功能元素
+	table 【border width cellspacing】
+		caption
+		thead
+			tr
+				td/th 【rowspan 、colspan】
+		tbody
+			tr
+				td/th
+		tfoot		
+	form
+		input
+			单行文本框 	 type="text"
+			密码框 			type="password"
+			单选按钮		type="radio"
+			复选框 			type="checkbox"
+			附件按钮 		type="file"
+		select
+		textarea
+		button
+		username:男
+		password:123321
+		gender:male
+
+		application/x-www-form-urlencoded
+			username=0BX0NW@password=123321&gender=male
+		multipart/form-data
+			只要表单元素中包含<input type="file">，只能为它
+
+	iframe
+		src
+
+===================
+css
+1. 介绍
+	层叠样式表
+		结构		前凸后翘 		html
+		装饰 		化妆 				css
+		内涵		谈吐 				js	
+2. 语法
+	1) 在html中如何引入css
+		1. 将css规则直接填写在style属性中
+		2. 将样式嵌入到style标签
+		3. 将样式写在.css文件中，再通过link将这个文件引入到html中
+
+	2) 语法组成
+		选择器 {
+			属性:值;
+			属性:值;
+		}
+
+		ul {
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+
+		<ul class="nav">
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li></li>
+		</ul>
+
+3. 选择器
+	1) 核心选择器
+		标签选择器		
+			div {}
+			ul {}
+			dl {}
+		类选择器
+			.nav {}
+		id选择器
+			#id {}
+		组合选择器
+			body , ul {}
+		并且选择器
+			ul.nav {}
+		普遍选择器
+			*
+	2) 层次选择器
+		父子选择器 
+			父 > 子
+			.nav > li { }
+			#wrapper > * {}
+			.right_nav > li {}
+		后代选择器
+			父   后
+			.right_nav li {}
+		下一个兄弟选择器
+			selector + selector
+		之后所有兄弟选择器
+			selector ~ selector
+
+	3) 伪类选择器【过滤器】
+		:first-child
+		:last-child
+		:nth-child(参数)
+			参数：数字,表达式(2n ,2n+1),关键字(odd、even)
+	4) 伪元素选择器【过滤器】
+		::after
+		ul.nav::after {
+			display:"block"	
+		}
+
+		<ul class="nav">
+			<li></li>
+			<li></li>
+		</ul>
+	5) 属性选择器【过滤器】
+		[name] 						选择具有name属性的元素
+		[name=username]		选择具有name属性,并且属性值为username的元素
+		[name^=u]					选择具有name属性,并且属性值以u开头的的元素
+		[name$=u]					选择具有name属性,并且属性值以u结尾的的元素
+		[name*=u]					选择具有name属性,并且属性值包含u的的元素
+4. 优先级
+	特权
+		!important
+	权值
+		1000	style属性		
+		100		#id
+		10		.class 、伪类
+		1			元素
+	顺序
+5. 盒子模型
+	针对于块元素讨论盒子模型
+	1) 基本概念
+		外边距 	margin
+			margin-top
+			margin-right
+			margin-bottom
+			margin-left
+			margin 	
+		边框		border
+			border-top
+				border-top-color
+				border-top-style
+					solid
+					dotted
+					dashed
+					double
+				border-top-width
+			border-right
+				border-right-color
+				border-right-style
+				border-right-width
+			border-bottom
+				border-bottom-color
+				border-bottom-style
+				border-bottom-width
+			border-left
+				border-left-color
+				border-left-style
+				border-left-width
+			border
+				border:1px solid #ccc;
+				是border-top，border-right，boder-bottom，border-left的速写形式
+		内边距 	padding
+			padding-top
+			padding-right
+			padding-bottom
+			padding-left
+			padding 	速写
+				5px
+				0 5px 						上下0,左右5px
+				0 5px 10px 				上0 	左右5px 	下10px
+				0 5px 10px 20px 	上右下左
+		宽 			width
+		高			height
+	2. 盒子模型
+		1) 怪异盒模型（IE8-）jquery - 银行
+			box-sizing:border-box;
+			盒子所占的宽度 = width （包含了border + padding + 内容实际宽）
+		2) 传统盒子（firefox）	
+			box-sizing:content-box;
+			盒子所占的宽度 = border + padding + width 	
+
+6) 浮动布局
+	层次关系
+	1. float:left/right
+		1) 块元素脱离默认文档流
+			1. 默认宽度为0
+			2. 失去了对父元素支撑的能力 【伪元素】
+		2) 在浮动流中，多个同级别浮动元素在一行中显示，当这一行容纳不下，会自动换行
+	2. 清理浮动
+		为容器内部添加一个子元素，一般使用伪元素较方便
+		ul.list::after {
+			content:"";
+			display:block;
+			clear:both;
+		}
+	3. 盒子居中
+		margin:0 auto;
+	3. 案例
+		四列布局
+		7个子元素布局
+	
+7. 文本规则
+	针对于盒子内容来进行修饰。具有可继承性
+	text-align:center; 		定义行内内容（例如文字）如何相对它的块父元素对齐
+	vertical-align:middle; 	调整行内元素的垂直排列
+	line-height:32px;
+	text-transform:
+		lowercase/
+	text-decoration-color
+	text-decoration-style
+		solid/dotted/dashed
+	text-decoration-line
+		underline/light-through/overline
+	text-decoration:underline/light-through/overline/none
+	overflow-x:
+	overflow-y:
+	overflow:
+		visible	
+		hidden
+		scroll
+8. 字体规则
+	针对于盒子内容来进行修饰。具有可继承性
+	font-family:'李氏字体','Microsoft YaHei','微软雅黑','宋体';
+	font-size:12px;
+	font-weight:normal/bold
+	font-style:normal/italic
+	color:#333;
+	font: font-size/line-height font-family;
+	font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,sans-serif
+
+	网络字体
+		1. 获取字体文件
+			woff、 eot、...
+		2. 定义网络字体
+			@font-face {
+				font-family: "iconfont";
+				//字体文件
+				src: "" 
+			}
+		3. 使用
+			// 基础样式
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+			}	
+			// 特殊样式
+			.icon-aixin:before {
+				content: "\e8ab";
+			}
+		<span class="iconfont icon-aixin"><span>
+9. 实体
+	&nbsp;
+	&lt;
+	&gt;
+10. 其他规则
+	display
+		block
+		inline
+		inline-bolck
+	列表规则
+		list-style:none
+	表格规则
+		border-collapse:collapse; 	当td添加边框，加在table上可以合并隔壁的边框
+		opacity:
+
+11. 单位
+	绝对单位
+		10px
+
+	相对单位
+		1em 	, em相对于当前元素的字体大小
+		1rem 	, rem相对于html元素选择器中设定的字体大小
+
+	颜色
+		关键字 		pink
+		十六进制 	#ffffff 	#000	#f4f4f4
+		函数 			rgb(114,141,153) 	=> #8f8d98
+		函数 			rgba(114,141,153,1) 
+
+12. 背景色
+	background-image  			背景图片
+		url('图片地址')
+	background-repeat 			背景图片重复方式
+		repeat/repeat-x/repeat-y
+		no-repeat
+	background-origin 			背景铺设的起点
+		border-box/padding-box/content-box
+	background-clip 				背景裁切的方式
+		border-box/padding-box/content-box
+	background-size 				图片大小
+		contain
+		cover
+		等比例 	100px 200px
+	background-position 		背景图片的位置
+		center
+	background-color 				背景色
+	background 							速写
+	background: url() #ccc no-repeat center;
+
+13. 定位布局
+	position: static;	// 默认，静态
+		relative
+			相对点：该元素在文档流中初始的位置
+			是否脱离文档流：不脱离
+			最佳实践：一般不移动，作为相对点
+		absolute
+			相对点：距离它最近的父定位元素，如果没有父定位元素，那么就只能相对于浏览器视口
+			是否脱离文档流：
+		fixed
+			相对点：相对于视口，并且不会随着浏览器的滚动而滚动
+			是否脱离文档流：脱离
+		sticky
+			相对点：
+			是否脱离文档流：
+
+	当元素上的position的取值为relative absolute fixed sticky之一，我们就认为当前这个元素为定位元素。定位布局可以使用定位属性，比如 left、right、top、bottom
+
+14. 伸缩盒布局
+	作用：与浮动布局的作用类似，用于将一个容器中多个子元素【块元素】在一行中多列排列，常用于响应式布局（移动端）
+	
+	概念：
+		主轴：flex-direction定义，row - x; column - y
+		交叉轴：与主轴垂直的轴 y, x
+
+		1. 子元素都是沿着主轴来排列的
+		2. 一般建议给容器添加宽高，子元素在容器中排列
+
+	使用：
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+		ul 容器
+			display: flex; 					让容器成为伸缩盒容器
+      flex-direction: row; 		容器中子元素的排列方式，row-沿着x轴
+      flex-wrap: wrap;
+      justify-content: space-around;
+		li 子元素
+			flex-basis 				主轴中基准值，主轴是x轴，相等于width
+			flex-grow 				主轴中剩余空间分配所占据份数
+      flex-shrink 			主轴中如果有亏损，所占亏损的份数
+			flex 							速写
+		ul {
+			display: flex;
+		}
+15. bootstrap 
+	栅格布局（栅格系统）
+	bootstrap3 			浮动
+	bootstrap4			伸缩盒
+
+16. 动画、过渡、变形
+	animation-*
+	transition-*
+	transform
+
+	1) 动画
+		使用：
+			1. 关键帧定义【专业】
+				@keyframes 动画名称 {
+					0%{
+
+					}
+					50%{
+
+					}
+					100%{
+
+					}
+				}
+			2. 动画设定
+				animation-name 	
+				animation-duration
+					10s
+					10000ms
+				animation-delay
+					10s
+					10000ms
+				animation-timing-function
+					linear/steps/ease/ease-in/...
+				animation-direction	
+					reverse
+					alternate
+					alternate-reverse
+				animation-iteration-count
+					4
+					infinite
+				animation-fill-mode
+					forwards
+					backwards
+					both
+	2) 动画库
+		1. 打开网页的时候可能一开始有白屏（*）
+			1) 加强服务器！
+			2) faster mini
+				1. 图片压缩
+				2. 图片合并（图标）
+				3. cdn加速 
+					将库【iconfont、】放到cdn服务器 
+		2. 使用
+			1. 获取cdn连接
+				<link href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+			2. 使用class	
+				基础规则
+				 animate__animated 
+				特殊规则
+				 animate__pulse
+			
+		库太多！(html、css、js)
+			50个
+			iconfont、animate.css、bootstrap、jquery、vue、vuerouter、vuex、react、redux、redux-saga、reat-router、webpack、babel、webpack-server、axios、moment、lodash、....
+	3) 过渡
+		1. 更加简单的动画，没有动画帧
+		2. 需要触发（:hover）
+
+		transition-property	需要过渡的属性
+			all
+		transition-duration	持续时间
+			2s
+		transition-timing-function 	时间曲线函数
+			linear
+			steps()
+			easy
+		transition-delay: 0s;				延迟时间
+		transition: property duration delay timing;
+	4) 变形
+		transform-origin
+			center
+			top left
+		transform:
+			scale(2)
+			rotate(45deg)
+			rotateX(45deg)
+			rotateY(45deg)
+			rotateZ(45deg)
+			skew()
+			skewX()
+			skewY()
+			translate()
+			translateX()
+			translateY()
+
+
+17. 响应式布局
+	1) pc端
+		1. 类似于腾讯视频
+			容器的宽度随着屏幕的分辨率大小的改变而改变
+
+		2. 纯响应式(与mobile兼容)
+			完全兼容移动的设备
+	2) mobile端
+		手机型号不同，宽度不同
+		1. 不要给容器【块元素】指定宽度，让他默认为100%
+		2. 子元素【列元素】宽度使用相对单位,百分数
+
+	媒体查询技术
+		.products {
+      width: 990px;
+      margin: 0 auto;
+    }
+    .products > ul > li {
+      width: 19.5%;
+      height: 100px;
+      background-color: rebeccapurple;
+    }
+
+		@media screen and (min-width: 1300px) {
+      .prodmucts {
+        width: 1200px;
+      }
+      .products > ul > li {
+        width: 16.5%;
+      } 
+    }
+		
+    @media screen and (min-width: 1500px) {
+      .products {
+        width: 1400px;
+      }
+      .products > ul > li {
+        width: 14%;
+      }
+    }
+
+		<link rel="stylesheet" href="./css/style_normal.css">
+		<link media="screen and (min-width: 1300px) " rel="stylesheet" href="./css/style_middle.css">
+		<link media="screen and (min-width: 1500px) " rel="stylesheet" href="./css/style_big.css">
+
+18. bootstrap (css3)
+	多页面程序（jquery + bootstrap）
+	单页面程序 教务系统（vue vuex vueRouter elementui【组件库】）
+	bootstrap	
+		1. 全局样式的重置
+		2. 布局规则（栅格系统）
+		3. 样式（表格、列表、表单...）
+		4. 组件
+			模态框
+			轮播图
+			轮子（框架）
+	bootstrap3 
+		栅格布局使用float
+	bootstrap4	
+		栅格布局使用flex
+	使用
+		1) 引用bootstrap.css 【cdn】
+
+		2) 使用
+
+
+
+
+		前端							服务器端
+		/*
+		css文件 					css文件 「Content-Type:text/html」
+19. less
+	1) 安装
+		安装nodejs
+
+		npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+		cnpm install -g less
+
+		less --version
+	2) 通过less的语法编写css代码
+
+web网页 (html、css)
+webapp 		通过浏览器打开的H5网页 (html、css)
+	1. safari/uc/google
+	2. weixin dingding 支付宝 淘宝
+app(成本太高，灵活度较差；效率高)
+	android/ios
+hybird app（效率媲美原生，灵活）
+	vue/react/
+	weex/rn/flutter
+=================================
+1. 阿里云服务器如何上传文件
+	1) ip root 密码
+	2) 常用命令
+		ssh 用于远程登录阿里云
+		> ssh 用户名@ip
+		> ssh root@121.199.29.84
+
+		scp 用于本地文件与阿里云进行传递
+		> scp 本地文件路径 用户名@ip:上传在linux中的哪个路径
+		> scp ./a.txt root@121.199.29.84:/opt
+2. 如何将我们的网页部署到apache
+	1) 安装apache
+		121.199.29.84
+		=>
+		http://121.199.29.84:80/index.html
+
+		# apt-get install apache2
+		安装好之后直接启动
+
+	2) 将网页部署到apache的部署目录
+		默认的部署目录位于 
+			/var/www/html
+		http://121.199.29.84/index.html
+			=》/var/www/html/index.html
+
+		http://121.199.29.84/1-hello.html
+			=》/var/www/html/1-hello.html
+
+		http://121.199.29.84/cms/a.html
+			=》/var/www/html/cms/a.html
+	
+三、 less【面试必备】
+	css脚本化
+	@huise = "#f4f4f4"
+	ul.list > li {}
+	ul.list > li > .item{}
+
+	ul.list {
+		color:"";
+		li:{
+			.item{
+
+			}
+		}
+	}
+
+	.box1:{
+		bordr-color:@huise;
+	}
+	.box2:{
+		background-color:@huise;
+	}
+	.box3 {
+		color:@huise;
+	}
+三、js
+1. linux
+	1) linux环境
+		云服务器ubuntu16.04
+			外网ip
+			安装软件
+		虚拟机ubuntu16.04	
+			普通账号 charles
+
+			修改超级管理员的密码
+			$ sudo passwd
+			切换到超级管理员下
+			$ su -
+	2. 云服务器
+		1) 信息
+			外网ip:
+			账号: root/ubuntu
+			密码: 重置密码
+		
+	3. linux操作系统
+		多用户操作系统
+		> 	windows终端
+		# 	linux的终端并且超级用户
+		$ 	linux的终端并且普通用户
+
+		1) 远程登录(window10)
+		> ssh root@134.175.154.93
+		2) 组长为组员创建账号
+		# ls /home
+		# adduser zhangsan
+		134.175.154.93
+		zhangsan/zhangsan
+		ssh zhangsan@134.175.154.93
+4. 常用命令
+	su - 用户名			切换到指定用户下
+	ls 						 打印当前目录下的文件及目录
+	cd 路径					切换当前路径
+	clear 				 清理屏幕
+
+	
+5. apache2
+	1) 安装apache2
+		1. apt安装 [apache、mysql、vsftpd、...]
+			更换代理【如果使用阿里云则不需要】
+				# wget http://134.175.154.93/sources.list.now
+				# mv sources.list.now /etc/apt/
+				# rm sources.list
+				# mv sources.list.now sources.list
+			更新源
+				# apt update
+			
+			安装软件
+				# apt install apache2
+		2. 编译安装
+			1) 下载源代码 fastdfs
+			2) 编译生成可执行文件
+			3) 运行可执行文件
+		3. 解压安装[jdk、nodejs、tomcat]
+			zip/gz/...
+			1) 解压到/opt
+			2) 配置环境变量
+				/etc/profile
+	2) 上传网页到服务器上
+		> scp 本地文件 账号@ip:path
+		> scp ./wangyi.html root@134.175.154.93:/var/www/html
+
+	3) 阿里云服务器搭建apache
+		# apt update
+		# apt install apache2
+		> scp ./wangyi.html root@ip:/var/www/html
+		浏览器中
+		http://ip/wangyi.html
+
+6. 目录及文件操作
+	1) linux目录介绍
+	/
+	/bin	/sbin		/home	/root 	/mnt	/usr /sys	/dev	/opt	/var
+	可执行文件目录		家目录 				磁盘 	系统目录 设备			第三方软件
+
+	2) 目录管理
+	超级管理员可以操作任意目录及文件
+	普通用户默认情况下可以操作家目录中的任意目录及文件
+	sudoer是超级管理员授权的用户，这些用户可以通过在命令前添加sudo来执行超级管理员的命令
+		# vi /etc/sudoers
+
+		$ more /etc/shadow
+		$ sudo more /etc/shadow
+	$ man
+		manuals 手册
+	$ cd 路径
+		change directory
+		切换到指定路径下
+		cd / 			切换到根目录中
+		cd /home/zhangsan/webui	切换到webui【绝对路径】
+		cd webui 	切换到webui目录下【相对路径】
+		cd .. 		上一级
+		cd .			当前
+		cd ~ 			回家
+		cd 				回家
+
+	$ mkdir
+		mkdir webui
+		mkdir -p JavaEE/corejava/list
+		mkdir android ios
+	$ rmdir
+		删除空目录
+	$ rm
+		rm -r JavaEE
+	$ touch 
+		touch a.txt
+		当文件不存在的时候创建文件，当文件存在的时候修改其最近访问时间
+	$ cp
+		拷贝
+		cp a b
+	$ more 
+		预览
+		more a.txt
+	$ sudo
+		以超级管理员身份运行
+		sudo more /etc/shadow
+		sudo !历史编号 		运行历史中的某个命令
+		sudo !! 				运行上一条
+	$ mv
+		移动或重命名
+		mv a b
+		mv a /opt
+	$ ls
+		打印当前目录下的子目录及文件
+		ls 		当前
+		ls /	根目录
+		ls -a 列出指定目录下的所有的文件及目录
+		ls -l 长格式
+7. vim
+	编辑器（linux）,三种模式：命令行模式，插入模式，底行模式
+
+	命令
+		yy
+		dd
+		p
+		u
+
+	命令行模式	-> 插入模式
+		i 		当前光标前插入
+		I 		当前行前插入
+		a 		当前光标后追加
+		A 		当前行后追加
+		o 		下一行开始
+		O 		上一行开始
+	底行
+		:w						保存
+		:w new.text 	另存为
+		:q 						退出
+		:wq						保存并且退出
+		:q!						强制退出
+		
+		:set nu
+
+		spf13
+	.vimrc
+		vim的配置文件，这个文件一般位于用户家目录
+		set nu
+		set autoindent
+		set tabstop=2
+
+	spf13
+		懒人vim配置
+
+8. 网络命令
+	wget
+	curl
+9. 软件安装(jdk、nodejs)
+	1) 将软件上传到阿里云
+		> scp ./node-xxx.tar.xz root@192.168.15.131:/opt
+		> scp ./node-xxx.tar.xz zhangsan@192.168.15.131:~
+	2) 解压
+		/opt # tar -xvf node-xxx.tar.xz
+
+		unzip 	前端代码打包部署
+			unzip wangyi.zip
+			*.zip
+		tar 		linux软件
+			tar -xvf node-xxx.tar.xz
+			*.gz
+			*.xz
+
+		xz无法解压问题处理
+			1. 安装unxz
+			$ sudo apt install xz-utils
+			2. 解压缩
+			$ unxz node-v12.18.2-linux-x64.tar.xz
+			3. 拆包
+			$ sudo tar -xvf node-v12.18.2-linux-x64.tar
+			
+	3) 配置环境变量
+		/opt # vi /etc/profile
+
+		export NODE_HOME=/opt/node-xxx
+		export PATH=$PATH:/NODE_HOME/bin
+
+	4) 生效
+		# source /etc/profile
+
+	5) 测试
+		# java -version
+		# node --version
+
+10. mysql
+	1) 安装
+		# apt install mysql-server-5.7
+	2) 设置root密码
+		切记不要使用root作为密码，也不要设置过于复杂
+	3) 测试
+		# mysql -uroot -h127.0.0.1 -p
+		输入密码，可以登录
+		# mysql -uroot -h192.168.15.131 -p
+		输入密码，不能登录
+
+		防火墙
+		mysql
+	4) 修改配置信息
+		1. 修改mysql.user
+			root用户的host改为%
+
+			mysql > show databases;
+			mysql > use mysql
+			mysql > show tables;
+			mysql > update user set host='%' where user='root';
+
+		2. 修改/etc/mysql/my.cnf
+[client]
+default-character-set=utf8
+[mysqld]
+character-set-server=utf8
+max_connections=1000
+
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
+
+bind-address=0.0.0.0			
+		3. 重启mysql服务
+		# service mysql restart
+
+11. git
+	版本控制器
+	cvs / svn / git (几乎集成在目前主流的ide上)
+	跨平台 linux os windows
+	客户机
+	ubuntu(git)-> 代码 -> 上传到gitee
+	1) 本地仓库管理
+		$ git --version
+
+		将当前文件夹初始化为一个git仓库
+		$ git init	
+
+		查看仓库状态
+		$ git status
+
+		将仓库中的新文件添加到git缓存中用于最终提交(交给课代表)
+		$ git add * 
+
+		将缓存中的数据提交形成版本
+		$ git commit -m ""
+		首次提交要告诉给git你是谁
+			git config --global user.email "809501557@qq.com"
+  		git config --global user.name "pluslicy"
+		
+		想要代码回到第一次提交的状态
+		$ git reset --hard 版本号
+
+	2) 远程仓库与本地仓库合并
+		在gitee中创建一个远程仓库
+
+		将本地仓库与远程仓库绑定（一个本地仓库只能与一个远程仓库进行绑定）
+			$ git remote add origin https://gitee.com/pluslicy/study_tl2020_git.git
+
+			查询git的所有配置信息
+			$ git config --list 
+
+		拉取
+			$ git pull origin master
+		推送
+			$ git push origin master 
+
+
+
+	3) 团队协作
+
+		分支管理
+			分支创建
+			$ git branch dev
+			查看所有分支
+			$ git branch --list
+			删除分支
+			$ git branch -d 分支名称
+			合并分支
+			$ git checkout dev
+			
+
+		冲突
+		永远不用动不属于你的文件
+		pages
+			article
+				List.vue
+				Content.vue
+			category	
+				List.vue
+		router	
+			index.js
+
+			
+Javascript
+1. 学习
+	linux环境下
+	编辑器 		vi
+	执行环境 	nodejs
+2. 介绍
+		js在浏览器中运行，进行表单验证，页面的局部更新（dom操作），浏览器的操作（bom操作）。js解释器，IE，网景推出自己的浏览器，浏览器中具有js解释器；由于js解释器不统一，js标准就不一样，兼容性问题！
+
+		js是解释型语言，无需编译，直接运行在解释器上
+		java/c编译型,java->.class 再运行到jvm上，c->.out 再运行到linux
+		
+		ECMAScript5 	Javascript标准
+			语法：变量、关键字、保留字、表达式、流程控制语句、对象、函数、数组...
+				Number
+
+		DOM: Document Object Model 	文档对象模型，浏览器厂商通过es5编写的控制html/css的代码
+				document.getElementById();
+				dom.addEventListener()
+				dom.attachEvent()
+
+		BOM: Browser Object Model 浏览器对象模型，浏览器厂商通过es5编写的控制浏览器的代码
+			alert();	
+			setTimeout(function(){
+				//
+			},1000)
+			XMLHttpRequest (ajax)
+
+		android/ios
+		移动互联，前端发展， android + H5 ,JS
+		nodejs,google将浏览器中的js解释器给掏出来。可以安装在任意的服务器端，并且nodejs中提供了大量的基础库,file、http,这个时候js具备服务器端能力
+
+		在nodejs中，不存在兼容性问题，因为nodejs中压根就没有dom/bom，因此切记不要在nodejs中执行任何dom和bom代码，由于不存在兼容性问题，nodejs是可以大量发挥js高级标准，ES6语法一般在nodejs中可以完全运行。
+
+3. hello world
+	1) 在nodejs中
+		1. 通过vi编辑 （es5）
+		2. 通过nodejs来执行 
+	2) 在浏览器
+		1. 通过vscode编辑（es5、dom、bom）
+			1） html
+			2) <script></script>
+				一般script标签位于body之前
+		2. 通过浏览器来执行
+	
+4. 注释
+	html: 	<!-- 注释 -->	
+	css: 		/**/
+	Js: 		//单行注释
+					/*多行注释*/
+		
+5. 关键字与保留字
+6. 变量
+	1) js是弱类型的语言
+		Js 是弱类型语言
+			1) 变量的数据类型在初始化的时候
+			2) 变量的数据类型可以随时发生改变
+			3) 类型细分不明显
+			var a; 	a = 2; a = "二"
+
+
+		Java 是强类型语言
+			1)变量的数据类型在声明的时候确定
+			2)变量的数据类型一定确定不能更改
+			int a; a = 2;
+			String b ; b = "hello world"
+			double c = 2.5;
+
+	2) var
+		let 		变量
+			let a = 3;
+			a++;
+		const 	常量
+			const a = 3;
+
+		1. 变量可以重复声明
+			var a = 3;
+			var a = "hello world"
+		2. 变量声明会被提升 (函数的声明也会)
+			console.log(a);
+			var a = 3;
+		3. var声明的变量没有局部作用域
+			function foo(){
+				if(true){
+					var a = 3;	
+					console.log("inner",a);
+				}
+				console.log("outer",a);
+			}
+			foo();
+
+7. 数据类型
+	1) 分类
+		1. 基本数据类型
+			变量的值是保存在栈区
+
+			Number
+				var a = 2;
+				var a = 2.1;
+				var a = 0X10;
+				var a = 010;
+
+				typeof a ; 	'number'
+			String
+				var a = "hello world"
+				var a = 'hello world'
+				var a = `
+					<ul>
+						<li>terry</li>
+						<li>larry</li>
+						<li>tom</li>
+					</ul>
+				`;
+				json字符串-对象
+				var json = '{"name":"terry","age":12}'
+			Boolean 
+				var a = true;
+				var a = false;
+			Null
+				var a = null;
+			Undefined
+				var a;
+				var a = undefined;
+
+		2. 引用数据类型（指针）
+			变量的引用地址保存在栈区，真正的值保存在堆区
+			除了基本数据类型之外的所有其他数据类型被称为引用数据类型
+			var a = {name:"terry",age:12}
+			var a = [18812344321,15912344321];
+			var a = function(){}
+			var a = /[abc]def/i
+	2) 类型检测
+		typeof a
+	3) 深拷贝浅拷贝
+		var a = {name:"terry",age:12}
+		// 浅拷贝【地址拷贝】
+		var b = a;
+		b.age++;
+		console.log(a.age);
+
+		// 深拷贝【克隆】
+		1. json 对象 ->json -> 对象
+		2. Object.assign({},a)
+		3. lodash
+	
+		var a = 3;
+		var b = a;
+		b++;
+		console.log(a);
+
+	4) 其他
+		1. NaN 
+			not a number
+			var result = 10/'a'			// NaN	
+			console.log(isNaN(result));		//true
+		2. Infinity、-Infinity
+			无穷大
+			var result = 10/0;		//Infinity
+			var result = -10/a;		//-Infinity
+			console.log(isFinite(result));		//false
+
+8. 操作符
+	表达式 ： 操作符 和 操作数组成
+	1) 算术操作符
+		允许非number类型的操作数进行运算，在运算之前，一般需要先将其他数据类型转换为数字类型再进行运算，当操作数中出现了字符串，则变成了字符串拼接操作。
+		+、 +=
+			var a = 3;
+			var b += a;		// var b = b + a;
+
+			var result = 1 + 2;
+			var result = 1 + true;
+
+			当操作数中出现了字符串，+ 运算就变成了字符串拼接运算。
+			var result = true + '1';		//	true1
+		-、-=
+			var result = 3 - 2;
+			var result = 3 - true; 	//2
+			var result = 3 - 'a' 		//NaN
+		*、*=
+			var result = 2 * 3;
+		/、/=
+			var result = 5/2;
+		%、%=
+			var result = 5%2;
+	2) 比较操作符
+		运算结果一般为boolean
+		<
+		<=
+		>
+		>=
+
+		== 		等于
+			将操作数转换为同一数据类型再进行比较
+			1) 基本数据类型的值
+
+			2) 引用数据类型的值
+				比较的引用地址。
+				var a = {name:"terry"}
+				var b = {name:"terry"}
+				a == b;
+
+				'{"name":"terry"}' == '{"name":"terry"}'
+
+		=== 	全等
+			先比较两个操作数的数据类型，如果数据类型不一致，直接返回false,当数据类型一致的时候才对比值
+
+			1 == "1"			// true
+			1 === "1" 		// false
+
+		如何比较两个对象的属性是否一致
+			1. 先将对象序列化为json字符串
+			2. 对json字符串进行对比
+
+	3) 逻辑操作符【短路运算符】
+		&&
+			返回值不一定是boolean类型
+
+			true && false // 	false
+			true && true 	// 	true
+
+			var gender = 'female'
+			if(gender==='male' && age>18){
+
+			}	
+			对于以上代码，gender === 'male'运算结果为false,整个&&表达式的结果就为false,无需再进行其他运算。
+
+			var a ;
+			var result = a && 3;							//undefined
+			var result = 3 && a;							//undefined
+
+			var result = "hello world" && 3;	//3 
+			对于以上代码,"hello world"如果转换为boolean将为true,整个&&表达式的运算结果取决于&&后面的表达式，所以将&&后的结果直接返回。
+
+			var gender = 'female'
+			var age = 13;
+			var result = gender == 'male' && age > 12;
+			问：age>12是否可以执行？如何证明？
+
+		||
+			var result = true || false; 	//true, 有真则真
+			var result = false || false; 	//false,同假才假
+
+			var result = 1>2 || 'hello';	// hello
+			如上，1>2为false，但是无法确定整个表达式的结果，整个表达式的结果取决于第二个表达式，将其返回即可。
+
+			var result = 1<2 || 'hello' 	// true
+			如上，1<2为true,能确定整个表达式的结果，无需进行接下来的运算。
+		!
+			!true 		//false
+			!false 		//true
+			!!true 		//true
+			将其他数据类型转换为boolean类型
+			!"hello" 	//false
+			!!"hello"	//true
+	4) 三目操作符
+		表达式1 ? 表达式2 : 表达式3
+		如果表达式1为真，返回表达式2；如果表达式1为假，返回表达式3
+		var age = 19;
+		let result = age > 16 ?"成年人":"小孩子";
+	5) 一元运算符
+		+
+			+3		//3
+			一元加运算符后的操作数如果是其他数据类型，则转换为数字类型
+			+true	//1
+		-
+			一元减，负
+			-3 				//-3
+			-true 		//-1
+			-(-true) 	//1
+		++
+			自增
+			var a = 3;
+			var result = a++ + ++a
+
+			console.log(result);	//8
+			console.log(a);				//5
+		--
+			自减
+		
+
+
+	6) 位运算 *
+		原、反、补
+		针对于数字类型的值进行运算，在运算之前先转换为二进制
+		&
+			1000 0010
+			0000 0100
+		|
+		^
+	问题：
+		&& 与 &区别，|| 与|区别？
+
+		机试
+		1) 软考
+		2) 大厂 ： 华为、阿里 （校招）、哔哩哔哩
+			100+道算法
+
+9. 类型转换
+	* -> 数字类型
+		通常在dom中或者是从后端拿到的数据不是纯数字类型，但是需要进行数学运算，在运算之前要先转换为数字类型
+		Number(a)
+		+a
+		-(-a)
+		parseInt(a)
+		parseFloat(a)
+
+	* -> 布尔类型
+		Boolean(a)
+			false : 	null 0 undefined NaN "" Infinity...
+			true: 		{} 1 "hello"
+		!!a
+
+		if(exp1){}
+		exp1 可以是任意数据类型，因为js在执行过程中会自动将其转换为boolean
+		if(obj != null){ }
+		if(obj){ }
+		
+	* -> 字符串类型
+		String(a)
+		a+""
+
+10. 流程控制语句
+	1) 分支语句 
+		1. if 分支
+			if(exp){
+				xxx
+			}
+			
+			当exp为true或者可以被转换为true的时候，大括号内部的代码会执行
+
+			if(exp){
+
+			} else {
+
+			}
+			当exp为true,执行if代码块的内容，否则执行else代码块的内容
+
+			if(exp1){
+
+			} else if(exp2) {
+
+			} else {
+
+			}
+
+			练习：
+			提供函数，接收数字参数『1，2，3....』，当参数为1，输入"周一",当参数为2,输出"周二"
+			function foo(num){
+				if(num === 1){
+					console.log("周一");
+				} else if(num === 2){
+					console.log("周二");
+				} else if(num === 3){
+					console.log("周三");
+				} else if(num === 4){
+					console.log("周四");
+				} else if(num ===5 ){
+					console.log("周五");
+				} else {
+					console.log("周末");
+				}
+			}
+			foo(2);
+		2. switch分支
+			解决if-else if -...-else繁琐，switch更加简洁一些
+			switch(v){
+				case c1:
+					...
+					break;
+				case c2:
+					...
+					break;
+				...
+				default:
+					...
+			}
+			v 表示变量
+			c1、c2、c3、... 常量
+			当 v === c1的时候，执行c1代码块中的内容，break表示跳槽switch代码块，如果不加break，后续代码都会执行直到遇到break或者switch结束
+			default代码块可以位于switch中的任意位置，但是要注意，如果不是位于最下方，一定在代码块中添加break
+
+	2) 循环语句
+		要素：初始条件，结束判定条件，累加
+		1. for
+			for(初始化条件; 结束判定条件; 累加){
+				循环体
+			}
+
+			打印出九九乘法表
+			1 * 1 = 1
+			1 * 2 = 2  2 * 2 = 4
+			1 * 3 = 3  2 * 3 = 6  3 * 3 = 9
+			1 * 4 = 4  2 * 4 = 8  3 * 4 = 12 4 * 4 = 16
+			...
+			1 * 9 = 9  2 * 9 = 18 3 * 9 = 27 ....
+
+
+			1 * 9 = 9  2 * 9 = 18 3 * 9 = 27 ....
+			...
+			1 * 4 = 4  2 * 4 = 8  3 * 4 = 12 4 * 4 = 16
+			1 * 3 = 3  2 * 3 = 6  3 * 3 = 9
+			1 * 2 = 2  2 * 2 = 4
+			1 * 1 = 1
+		2. while 前置判断循环
+
+			初始化条件
+			while(结束判定条件){
+
+				迭代
+			}
+		3. do-while
+			初始化条件
+			do {
+				
+				迭代
+			} while(结束判定条件);
+
+		4. for-in
+			用于遍历数组或者对象
+
+	算法：
+11. 对象
+	对象也是一种数据的集合，键值对。
+	1) 初始化
+		1. 字面量
+			对象字面量是以"{}"作为边界，以多个键值对组成，键与值通过":"隔开，键值对之间通过","隔开
+			var obj = {name:"terry",age:12,gender:"male"}
+		2. 构造函数模式
+			使用Object系统内置的对象构造函数，也可以使用自定义构造函数 Student
+			var obj = new Object();		// var obj = {};
+			obj 是对象，也被称为实例
+			Object是类，也被称为构造函数，构造函数是创建对象的模板
+	2) 属性访问
+		读写
+		1. 点访问
+			var obj = {name:"terry",age:12,gender:"male"}
+			对象.属性
+			var name = obj.name;
+			obj.name = 'terry';
+		2. 中括号访问
+			对象[变量]
+			var name = "age";
+			obj[name]	// 等价于obj["age"] 等价于obj.age
+	3) 属性遍历 (for-in)
+		打印出某个对象中所有的属性
+		for(var key in obj){
+
+		}
+		依次从obj中获取属性名赋值给key，通过obj[key]访问属性值
+	4) 对象序列化
+		将对象转换为字符串的描述，解决对象在io中传递的问题
+		1. 常规转换
+			obj.toString()
+		2. 转换为json字符串
+			JSON.stringify(obj)
+		3. 转换为查询字符串
+			var qs = require('querystring')
+			qs.stringify(obj)
+
+	5) Object
+		所有构造函数的父构造函数，所有的构造函数都直接间接的继承Object。所有的实例对象都可以调用其构造函数及其父构造函数的原型中的方法
+
+		Object.prototype.constructor
+		Object.prototype.toString()
+		Object.prototype.valueOf()
+		Object.prototype.hasOwnProperty()
+		Object.prototype.isPrototypeOf()
+		Object.prototype.prototypeIsEnumerable()
+		Object.prototype.toSource()
+
+		var obj = {}
+		obj.toSource();
+		
+
+
+		obj的构造函数是Object,所以obj可以调用Object.prototype的方法
+		var obj = {}	// var obj =new Object();
+		obj.toString();
+
+		arr的构造函数是Array,Array继承Object,因此，arr可以调用Array.prototype及Object.prototype中的方法
+		var arr = new Array(3);
+		arr.toString();
+
+	6) 删除属性
+		delete 对象.属性
+
+		对比java对象，js对象有哪些特殊的地方
+		1. js对象的属性可以被删除，java对象属性是固定的
+		2. js对象的属性可以随意添加，java对象属性是固定的
+		3. js对象可以通过字面量及构造函数来获取，java对象只能通过类构建
+			class Student{
+				private String name;
+				private Integer age;
+				public void setName(String name){
+					this.name = name;
+				}
+				public String getName(){
+					return this.name;
+				}
+			}
+			Student student = new Student();
+			student有且只能有两个属性
+
+	7) 自定义属性
+		var obj = {
+			name:"terry"
+		}
+
+		1. name是可以迭代的，是可读可写
+		假设：
+		1. name是不可以迭代的
+		2. name是不可写的
+		3. name是不可以被删除
+		4. 当对象属性的值发生变化的时候，我想知道？
+		5. 当name、age、gender属性发生变化的时候，都想检测到.
+
+		var obj = {}
+		obj.name = "terry"
+		=>
+		Object.defineProperties(obj,{
+			name:{
+
+			},
+			gender:{
+				
+			}
+		})
+		Object.defineProperty(obj,"name",{
+			configurable:true,
+			writable:true,
+			enumerable:true;
+			value:"terry",
+			set:function(){
+
+			},
+			get:function(){
+
+			}
+		})
+
+			
+
+
+		vue model -> 响应式 -> model发生改变一定会引起视图的变化
+
+		[{
+			name:"terry",
+			age:12
+		},{
+			name:"larry",
+			age:13
+		},{
+			name:"tom",
+			age:13
+		}]
+		====视图(vue,vue源码)===> 
+		<table>
+			<thead>
+				<tr>
+					<td>编号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>terry</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>larry</td>
+					<td>13</td>
+				</tr>
+			</tbody>
+		</table>
+12. 数组
+	数组是用于保存多个值的集合，在数组中，值被称为元素，值可以是任意的数据类型。通过索引来访问元素，索引从0开始。数组的长度通过lengh属性来获取
+	1) 初始化
+		1. 字面量
+		var arr = [8,1,20,3,2,9]
+		2. 构造函数模式
+		var arr = new Array();	// var arr = [];
+		var arr = new Array(5);	// var arr = [,,,,];
+		arr[0] = "terry"
+		arr[1] = "larry"				//["terry","larry"]
+	2) 访问
+		console.log(arr[0]);
+		console.log(arr[100]);	// undefined
+	3) length属性
+		length可读可写
+		arr.length
+	4) 数组遍历
+		for
+		while
+		do-while
+		for-in
+
+		Math.random();
+		创建一个长度为5的数组，填充5个随机数
+	5) 数组api（应用程序编程接口-别人写的代码供我们来调用）
+		1. Array.*
+			Array.isArray()	
+				判断一个变量是否是数组
+			Array.from();
+				将一个可迭代的对象转换为数组
+			Array.of();
+				将参数中的值作为数组的元素
+		2. Array.prototype.*
+
+			1) 遍历相关的方法
+				这些方法有个共同点，都需要传递一个回调函数作为参数，回调函数都有三个形参，分别为item,index,arr
+				Array.prototype.forEach()
+					遍历数组对象
+					参数:
+					返回值:undefined
+				Array.prototype.every()
+					元素是否都满足同一个条件
+					参数：回调函数需要返回boolean
+					返回值：boolean
+				Array.prototype.some()
+					是否有元素满足同一个条件
+					参数：回调函数需要返回boolean
+					返回值：boolean
+				Array.prototype.filter()
+					返回回调函数返回true的元素的集合
+					参数：回调函数需要返回boolean
+					返回值：数组
+				Array.prototype.map()
+					返回回调函数返回值组成的数组
+					参数：回调函数，一定要返回值
+					返回值：数组
+			2) 栈、队列相关方法
+				Array.prototype.push()
+					向数组的末尾追加指定值
+					参数：任意值
+					返回值：数组长度
+				Array.prototype.pop()
+					参数：无
+					返回值：删除的栈顶元素
+				Array.prototype.shift();
+					出队列
+					参数：无
+					返回值：删除的队列首部元素
+				Array.prototype.unshift();
+					将指定元素插入到队列的首部
+					参数：
+					返回值：插入后数组的长度
+			3) 排序相关
+				Array.prototype.reverse();
+
+				Array.prototype.soft();
+					默认将数组元素转换为字符串，然后进行排序
+					soft允许接收一个比较器函数作为参数，比较器函数接受两个参数，
+					如果a > b，返回1，升序
+					如果a > b，返回-1，降序
+				
+					[{name:"terry",age:19,grade:98}]
+
+					提供一个函数，接受属性作为参数，要求按照name/age/grade进行排序
+
+					function sort(property){
+						var arr = [{
+							name:"terry",age:19,grade:98
+						},{
+							name:"larry",age:12,grade:94
+						},{
+							name:"tom",age:15,grade:91
+						}]
+
+						arr.soft((function(prop){
+							return function(a,b){
+								if(a[prop] > b[prop]){
+									return 1;
+								} else {
+									return -1;
+								}
+							}
+						})(property))
+					}
+
+					闭包：函数内部嵌套函数，内部函数拥有外部函数的变量，内部函数与外部函数的这个变量就组成了闭包。
+
+
+				
+
+
+
+			模仿forEach写一个myForeach，其效果与forEach完全相同
+			var arr = ["terry","larry","tom"];
+			arr.forEach(function(item){
+				console.log(item);
+			});
+
+
+			--阿里p6--
+			Array.prototype.myForEach = function(handler){
+				for(var i=0;i<this.length;i++){
+					var item = this[i];
+					//handler(item,i);
+					handler.call(this,item,i);
+				}
+			}
+			arr.myForEach(function(item,index){
+				console.log(item);
+			});
+
+
+
+
+13. 函数
+	函数也是对象，是一个引用数据类型。
+	1) 分类
+		不管是普通函数还是构造函数，本质是完全一样的，只不过为了区分它们，我们将构造函数的函数名大写
+		1. 普通函数（方法）
+		2. 构造函数（类）
+	2) 函数定义
+		1. 函数声明
+			函数声明与var声明变量类似，都会有变量的提升。允许在函数声明前调用函数
+			函数名()
+			function 函数名(形参){
+
+			}
+			例如：
+			let result = add(1,2);		// 可以执行
+			function add( a, b){
+				return a + b;
+			}
+		2. 函数表达式
+			类似于普通的赋值表达式，变量会提升，但是函数初始化不会被提升
+			add();		// 报错！
+			var add = function(a,b){
+				return a + b;
+			}
+	3) 函数调用
+		函数名(实参列表);			
+			add(1,2)
+		函数名.call(this,实参列表)
+			add.call(this,1,2)
+		函数名.apply(this,实参数组)
+			add.apply(this,[1,2])
+	4) 函数内部属性
+		兜底对象（全局）
+			浏览器：window
+			nodeJs：global
+		只有在函数的执行过程中，内部属性才能被确定
+		arguments
+			保存函数的所有实参，是一个类数组对象。
+			arguments.callee 指向当前函数，常用语递归函数。但是在严格模式下无法使用
+		this
+			当前的执行环境对象
+			与函数的调用方式有关
+			如果使用"()"调用函数，查看"()"是否是函数名，如果是，查看函数名前有么有点"."，没有点"."this指向全局对象。有"."this指向点前面的那个对象。
+	5) 箭头函数（ES6）
+		一般用于回调函数，是回调函数的简写
+		箭头函数中的this指向包含它的外部函数的this，所有箭头函数一般放在外部函数里面。
+
+		function foo(){
+			["terry","larry"].forEach((item)=>{
+				console.log(this,item);
+			})
+		}
+		箭头函数this指向foo的this
+
+		foo(); 		//global
+		foo.call({})		//{}
+		foo.call({name:"terry"})		//{name:"terry"}
+
+		new Vue({
+			el:"#app",
+			data:{
+				students:[]
+				student{}
+			},
+			methods:{
+				// 加载学生信息
+				loadStudents(){
+					// this 指向vue对象
+					$.get('/findAllStudent',(students)=>{
+						// this指向外部函数this,也就是指向vue对象
+						this.students = students;
+					})
+				}
+			}
+		})
+
+	6) 函数本质
+		函数是一种特殊对象，默认情况下，一个函数都会有一个原型对象与之对应，函数中有个指针prototype指向原型对象，原型对象中有个constructor指向函数，你中有我，我中有你。
+
+		function foo(){
+
+		}
+		foo.prototype.constructor === foo;		//true
+		你女朋友的男朋友是不是你
+
+
+
+14. 正则表达式
+
+15. 其他内置函数
+	String
+
+		api
+		String.prototype.split()
+			将字符串根据指定参数进行切割，返回一个数组
+	Date
+
+	Math
+
+16. 面向对象
+	构造函数
+
+17. dom
+
+18. bom
+
+
+四、Html5 API 
+	本地存储 画布 视频音频 
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

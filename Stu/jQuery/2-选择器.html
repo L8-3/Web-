@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		ul{
+			width: 1000px;
+			height: 100px;
+			border: 1px solid red;
+			display: flex;
+		}
+		li{
+			list-style: none;
+			width: 50px;
+			height: 50px;
+			border: 1px solid blue;
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			// 标签选择器
+			// $('li').css('background','pink')
+			// 类选择器
+			// $('.two').css('background','pink')
+			// id
+			// $('#three').css('background','pink')
+			// 兄弟选择器
+			// $('.two~li').css('background','pink')
+			// 后代选择器
+			// $('ul *').css('background','pink')
+
+			// 过滤器
+				// $('li:first').css('background','pink')
+				// $('li:last').css('background','pink')
+				// $('li:nth-child(2)').css('background','pink')
+				// eq
+				// $('li:gt(5)').css('background','pink')
+
+				// $('li:not(".two")').css('background','pink')
+				// 过滤器
+				// $('li:contains("o")').css('background','teal')
+				// $('li:empty').css('background','teal')
+
+				// $('li:parent').css('background','teal')
+
+				$('li:has("p")').css('background','teal')
+
+
+				
+
+		})
+	</script>
+</head>
+<body>
+	<ul>
+		<li>
+			<!-- <span>spanspan</span> -->
+			hello
+		</li>
+		<li class="two">
+			<span>world</span>
+		</li>
+		<li id="three">
+			<p>hello</p>
+			
+		</li>
+		<li></li>
+		<li>
+			hello
+		</li>
+		<li>
+			<span></span>
+		</li>
+		<li>
+			world
+		</li>
+	</ul>
+	<span class="two">span</span>
+</body>
+</html>

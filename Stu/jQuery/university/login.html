@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		.main{
+			width: 400px;
+			height: 600px;
+			background-color: pink;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			function save(){
+				var obj = {
+					username:$('.one').val(),
+					password:$('.two').val()
+				}
+				// console.log(obj)
+				// $.aja('http://47.106.244.1:8888/user/login',obj,function(res){
+				// 	console.log(res)
+				// })
+				$.ajax({
+					url: 'http://localhost:7788/user/login',
+					method:'post',
+					contentType:'application/json',
+					data: JSON.stringify(obj),
+					success:function(res){
+						localStorage.setItem('token',res.data.token)
+						$(location).attr('href','./index.html')
+					}
+				})
+				
+				
+			}
+
+			$('button').click(save)
+		})
+	</script>
+</head>
+<body>
+	<div class="main">
+		<form>
+			<div>
+				<span>username:</span>
+				<input class="one" type="text" name="username">
+			</div>
+			<div>
+				<span>password:</span>
+				<input class="two" type="text" name="password">
+			</div>
+
+		</form>
+		<button>登录</button>
+	</div>
+</body>
+</html>

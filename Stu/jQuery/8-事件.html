@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+		span{
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			background-color: coral;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			// $('div').click(function(){
+			// 	alert(1)
+			// })
+
+			$('div').on({
+				click:function(){
+					console.log('点击')
+				},
+				mouseover:function(){
+					console.log('鼠标事件')
+				}
+			})
+
+			$('button').click(function(){
+				$('div').off('click')
+			})
+
+			$('span').click(function(){
+				$('span').css('background-color','red')
+			})
+			// 模拟点击
+			$('.btn').click(function(){
+				$('span').trigger('click')
+			})
+
+
+			$('input').change(function(){
+				console.log($(this).val())
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>解绑</button>
+	<div></div>
+	<span></span>
+	<button class="btn">改变</button>
+	<input type="text" name="">
+</body>
+</html>

@@ -1,0 +1,162 @@
+<div id="category">
+    <div class="category_header">
+        栏目管理
+    </div>
+    <button class="btn">批量删除</button>
+    <button class="btn">新增</button>
+    <div class="category_content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>用户</th>
+                    <th>真实姓名</th>
+                    <th>电话</th>
+                    <th>地址</th>
+                </tr>
+                <!-- <th></th> -->
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <div class="modal"  id='mymodal'>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                          <label for="inputEmail3" class="col-sm-2 control-label">栏目名称:</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control"  name="name">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-2 control-label">序号</label>
+                          <div class="col-sm-10">
+                            <input type="password" class="form-control" name="no"  />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">描述</label>
+                            <div class="col-sm-10">
+                                <textarea name='description' class="form-control" rows="3"></textarea>
+                            </div>
+                          </div>
+                       
+                      </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+    </div>
+</div>
+<script>
+    $(function(){
+        $('button:contains(Save)').on('click',function(){
+            $('#mymodal').hide()
+
+            // alert(111)
+            var names = $('input[name=name]').val()
+            var description = $('[name=description]').val()
+            var no = $('input[name=no]').val()
+            var obj = {
+                name:names,
+                description:description,
+                no:no
+            }
+            $.ajax({
+                url:baseURL + '/category/saveOrUpdate',
+                method:'post',
+                data:obj,
+                success:function(){
+                    loadDate()
+                }
+            })
+        })
+        $('button:contains(新增)').on('click',function(){
+            $('#mymodal').show()
+
+        })
+        $('button:contains(批量删除)').on({
+            click:function(){
+                var oids = $('input[type=checkbox]:checked')
+                 oids=oids.map(function(index,item){
+                    return $(item).val()
+                }).get().toString()
+                // console.log(oids)
+                $.ajax({
+                    url:baseURL+'/category/batchDelete',
+                    method:'post',
+                    data:{ids:oids},
+                    success:function(res){
+                        
+                    }
+                })
+            }
+        })
+
+
+        $('tbody').on({
+            click:function(){
+                // alert(1)
+                var oid = $(this).closest('tr').find('input').val()
+                // console.log(oid)
+                $.ajax({
+                    url:baseURL+'/category/deleteById',
+                    data:{id:oid},
+                    success:function(res){
+                        console.log(res)
+                        loadDate()
+                }
+                })
+            }
+        },'.del')
+        function loadDate(){
+            $('tbody').empty();
+            $.ajax({
+                url:baseURL+'/category/findAll',
+                method:'get',
+                success:function(res){
+                    // console.log(res.data)
+                    res.data.forEach(function(item){
+                        var newTr = $(`<tr>
+                    <td>
+                        <input type='checkbox' value=`+item.id+` />
+                    </td>
+                    <td>`+item.name+`</td>
+                    <td>`+item.no+`</td>
+                    <td>`+item.parentId+`</td>
+                    <td class='caozuo'>
+                        <span>修改</span>
+                        <span class='del'>删除</span>
+                    </td>
+                </tr>`)
+
+                $('tbody').append(newTr)
+                    })
+                }
+            })
+        }
+        loadDate()
+    })
+</script>
+<style>
+    .category_header{
+        height: 30px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+    #mymodal{
+        /* display: block!important; */
+    }
+</style>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理系统</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script src="./js/index.js"></script>
+	<script src="./js/config.js"></script>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		html,body,.main{
+			width: 100%;
+			height: 100%;
+		}
+		.top{
+			box-sizing: border-box;
+			width: 100%;
+			height: 70px;
+			background-color: teal;
+			font-size: 30px;
+			color: #fff;
+			line-height: 70px;
+			padding-left: 10px;
+		}
+		.bottom{
+			width: 100%;
+			height: calc(100% - 70px);
+			/*background-color: lightblue;*/
+		}
+		.bottom-left{
+			width:  170px;
+			height: 100%;
+			background-color: pink;
+			float: left;
+		}
+		.bottom-right{
+			width: calc(100% - 170px);
+			height: 100%;
+			background-color: #eee;
+			float: left;
+		}
+		.user{
+			width: 15%;
+			height: 70px;
+			/*background-color: red;*/
+			float: right;
+			font-size: 20px;
+		}
+		img{
+			float: left;
+			margin-top: 10px;
+		}
+		.bottom-left li{
+			list-style: none;
+			width: 100%;
+			height: 50px;
+			background-color: teal;
+			border-top: 1px solid #eee;
+			color: #fff;
+			font-size: 18px;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+		}
+		.bottom-left li:hover{
+			color: yellow;
+		}
+		.content{
+			width: 98%;
+			height: 95%;
+			background-color: #fff;
+			margin-left: 1%;
+			margin-top: 1%;
+			border-radius: 10px;
+		}
+		.content > div{
+			padding: 10px;
+		}
+	</style>
+	<script>
+		$(function(){
+			$('.bottom-left li:first').trigger('click');
+		})
+	</script>
+</head>
+<body>
+	<div class="main">
+		<div class="top">
+			<span>看点资讯管理系统</span>
+			<div class="user">
+				<img src="../css_day03/images/儿童手绘-兔子.png" alt="" width="50" height="50">
+				<span>用户名：张三</span>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="bottom-left">
+				<ul>
+					<li>用户管理</li>
+					<li>资讯管理</li>
+					<li>栏目管理</li>
+					<li>评论管理</li>
+				</ul>
+			</div>
+			<div class="bottom-right">
+				<div class="content"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

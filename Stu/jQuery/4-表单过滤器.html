@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单过滤器</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
+		input{
+			/*background-color: red;*/
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$('#input:disabled').css('background-color','red')
+		})
+	</script>
+</head>
+<body>
+	<form action="#">
+		<input id="input" type="text" name="" disabled="">
+		<!-- <input type="text" name=""> -->
+		<!-- <input type="text" name=""> -->
+	</form>
+</body>
+</html>

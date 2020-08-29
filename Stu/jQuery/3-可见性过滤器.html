@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可见性过滤器</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid blue;
+			margin: 10px;
+		}
+		.one{
+			display: none;
+			/*visibility: hidden;*/
+		}
+		.two{
+			visibility: hidden;
+		}
+	</style>
+	<script type="text/javascript">
+		// $(document).ready()
+		$(function(){
+
+			// $('div:hidden').css('display','block')
+			$('div:visible').css('visibility','visible')
+			// $('div').css('background','coral')
+		})
+	</script>
+</head>
+<body>
+	<div class="one">one</div>
+	<div class="two">two</div>
+</body>
+</html>
