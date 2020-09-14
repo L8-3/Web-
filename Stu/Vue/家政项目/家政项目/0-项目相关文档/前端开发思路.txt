@@ -1,0 +1,128 @@
+ej_maneger:
+
+	后台URL地址：
+	swagger地址：
+	组件库地址：https://element.eleme.cn/2.13/#/zh-CN/component/layout
+		注意版本号与ej_maneger/package.json中"dependencies": {"element-ui": "2.13.2"}要相同
+	
+
+1.cnpm install项目内安装依赖
+2.cnpm run dev 启动项目
+	该项目已经预先搭建好了，ej_maneger/vue.config.js中已新增修改内容
+	新建项目、更改路由、新建文件
+3.更改请求的baseURL
+	a)src/http/axios.js中axios.defaults.baseURL的值可选更新
+	b)src/utils/request.js中baseURL的值
+	b)ej_maneger/.env.production 中VUE_APP_BASE_API的值
+4.功能实现：登录
+	a)查看sql`base_user`,swagger中管理员登录
+		{
+		  "password": "123321",
+		  "type": "manager",
+		  "username": "admin"
+		}
+	b)src/store/modules/user.js中user login新增属性type:'manager'，即
+		login({ username: username.trim(), password: password,type:'manager' })
+5.功能实现：顾客管理
+	a)根据浏览器URL知道顾客管理custermer对应的修改代码文件：
+		src/pages/custermer/index.vue
+	b)根据ej1.0-server-ui.zip填写内容
+		头部操作组件、表格组件、分页组件
+	c)加载数据：分页
+		使用vuex
+		i)src/store/modules中新建customer.js
+		ii)src/store/index.js中进行注册 
+			import customer from './modules/customer'
+			modules: {新增customer}
+		iii)src/store/modules/customer.js中编码
+			import request from '@/utils/request'
+			import querystring from 'querystring'
+			export default {
+			  namespaced: true,
+			  state: {
+			  },
+			  mutations: {//修改状态
+			  },
+			  actions: {
+			  }
+			}
+		iv)mapActions操作：
+			《src/store/modules/customer.js》
+				actions: {
+				    //分页查询
+				    queryCustermer({commit}, queryForm) {    
+				        request({
+				            method: 'POST',
+				            url: '/customer/query',
+				            'content-type': 'application/x-www-form-urlencoded',
+				            data: querystring.stringify(queryForm)
+				          }).then(
+				            (res)=>{
+				                console.log(res)
+				                console.log(res.data.total)
+	                			console.log(res.data.list)
+				            }
+				        );
+				    }
+				  }
+			《src/pages/custermer/index.vue》
+			import {mapState,mapActions} from 'vuex'
+			methods:{
+				...mapActions('customer',['queryCustermer','saveCustermer', 'deleteCustermer']),
+			}
+			created(){
+				//初始加载顾客
+				this.queryCustermer(this.list);
+			}
+		iv)mapState操作：
+			《src/store/modules/customer.js》
+			  state: {
+			  	custermers: [],
+    			total: ''
+			  },
+			  mutations: {
+			  	SET_CUSTERMER(state, custermers) {
+			      state.custermers = custermers
+			    },
+			    SET_TOTAL(state, total) {
+			      state.total = total
+			    }
+			  },
+			  actions: {
+			  	then((res)=>{
+			  		commit(SET_CUSTERMER,res.data.list)
+			  		commit(SET_TOTAL,res.data.total)
+			  	})
+			  }
+			 《src/pages/custermer/index.vue》
+			  computed: {
+			    ...mapState('custermer', ['custermers', 'total'])
+			  },
+			  methods:{
+			  	changePageNum(val) {
+			      this.list.page = val - 1
+			      this.queryCustermer(this.list)
+			    }
+			  }
+
+	d)加载数据：搜索
+		《src/pages/custermer/index.vue》
+			handleSearchStatus(){
+				this.list.page=0;
+				let obj={
+					page:this.list.page,
+					pageSize:this.list.pageSize,
+					status:this.input
+				}
+				if(this.input==''){
+					delete obj.status
+				}
+				this.queryCustermer(obj)
+			}
+	f)加载数据：详情
+
+
+
+
+
+

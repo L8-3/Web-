@@ -1,0 +1,284 @@
+一、使用企业级框架完成项目的优势：
+      1、未使用框架的项目：
+	（1）使用的技术：html、css、js、jquery、ajax、bootstrap
+	（2）依赖与dom操作，对于底层技术基础要求较高，需要掌握熟悉的技术，在功能较多的项目上繁琐
+                        的dom会使得整体的项目进度慢，后期维护也需要付出更多的精力
+	（3）目前用于一些老一点的公司、银行、政府机构等大型项目
+	（4）特点:稳定、安全、开发效率低、难以维护，开发和维护都需要大量的人力物力财力
+      2、 使用框架的项目：
+	（1）使用的技术：vue、react、angularjs（三大框架）axios、element-ui、vant（组件库）
+	（2）摆脱dom操作，利用框架本身自带的数据驱动特性，减少大量的事情绑定操作
+	（3）用于现在大多数平台项目的开发
+	（4）特点:开发效率高、便于维护，在各方面的开销花费都会缩减
+
+二、家政服务平台(后台管理系统)
+      1、技术栈:html、css、js、vue、vuex、vue-ruoter、axios、element-ui、vue-element-admin
+      2、vue-element-admin（官网地址：https://panjiachen.github.io/vue-element-admin-site/zh/guide/）
+                 （1）简介
+                             vue-element-admin 是一个后台前端解决方案，它基于 vue 和 element-ui实现。它使用了
+                       最新的前端技术栈，内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，
+                       提供丰富的功能组件，它可以帮助我们快速搭建企业级中后台产品原型。
+                 （2）项目目录结构
+		├── build                      # 构建相关
+		├── mock                       # 项目mock 模拟数据
+		├── plop-templates             # 基本模板
+		├── public                     # 静态资源
+		│   │── favicon.ico            # favicon图标
+		│   └── index.html             # html模板
+		├── src                        # 源代码
+		│   ├── api                    # 所有请求
+		│   ├── assets                 # 主题 字体等静态资源
+		│   ├── components             # 全局公用组件
+		│   ├── directive              # 全局指令
+		│   ├── filters                # 全局 filter
+		│   ├── icons                  # 项目所有 svg icons
+		│   ├── lang                   # 国际化 language
+		│   ├── layout                 # 全局 layout
+		│   ├── router                 # 路由
+		│   ├── store                  # 全局 store管理
+		│   ├── styles                 # 全局样式
+		│   ├── utils                  # 全局公用方法
+		│   ├── vendor                 # 公用vendor
+		│   ├── views                  # views 所有页面
+		│   ├── App.vue                # 入口页面
+		│   ├── main.js                # 入口文件 加载组件 初始化等
+		│   └── permission.js          # 权限管理
+		├── tests                      # 测试
+		├── .env.xxx                   # 环境变量配置
+		├── .eslintrc.js               # eslint 配置项
+		├── .babelrc                   # babel-loader 配置
+		├── .travis.yml                # 自动化CI配置
+		├── vue.config.js              # vue-cli 配置
+		├── postcss.config.js          # postcss 配置
+		└── package.json               # package.json
+      3、项目搭建
+               （1）前期本地环境配置
+                                本地安装node(终端配置环境变量)
+			node -v（查看版本）
+		全局安装cnpm
+			npm install -g cnpm --registry=https://registry.npm.taobao.org
+		全局安装@vue-cli
+			cnpm install -g @vue/cli
+			vue --version（查看版本）
+               （2）安装vue-element-admin
+	       //克隆项目
+                         git clone https://github.com/PanJiaChen/vue-element-admin.git
+                       //进入项目目录
+                         cd vue-element-admin
+                       //安装依赖
+                         cnpm install
+                       //建议不要用 cnpm 安装 会有各种诡异的bug 可以通过如下操作解决 npm 下载速度慢的问题
+                         npm install --registry=https://registry.npm.taobao.org
+                       //本地开发 启动项目
+                         npm run dev
+                （3）路由配置（在文件src/router/index.js中）
+                        注意：路由配置规则
+                      // 当设置 true 的时候该路由不会在侧边栏出现 如401，login等页面，或者如一些编辑页面/edit/1
+                           hidden: true // (默认 false)
+
+                     //当设置 noRedirect 的时候该路由在面包屑导航中不可被点击
+                          redirect: 'noRedirect'
+
+                    // 当你一个路由下面的 children 声明的路由大于1个时，自动会变成嵌套的模式--如组件页面
+                    // 只有一个时，会将那个子路由当做根路由显示在侧边栏--如引导页面
+                    // 若你想不管路由下面的 children 声明的个数都显示你的根路由
+                   // 你可以设置 alwaysShow: true，这样它就会忽略之前定义的规则，一直显示根路由
+                       alwaysShow: true
+
+                      name: 'router-name' // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+                      meta: {
+                              roles: ['admin', 'editor'] // 设置该路由进入的权限，支持多个权限叠加
+                              title: 'title' // 设置该路由在侧边栏和面包屑中展示的名字
+                              icon: 'svg-name' // 设置该路由的图标
+                              noCache: true // 如果设置为true，则不会被 <keep-alive> 缓存(默认 false)
+                              breadcrumb: false //  如果设置为false，则不会在breadcrumb面包屑中显示(默认 true)
+                              affix: true // 若果设置为true，它则会固定在tags-view中(默认 false)
+
+                     // 当路由设置了该属性，则会高亮相对应的侧边栏。
+                     // 这在某些场景非常有用，比如：一个文章的列表页路由为：/article/list
+                    // 点击文章进入文章详情页，这时候路由为/article/1，但你想在侧边栏高亮文章列表的路由，                               就可以进行如下设置
+                            activeMenu: '/article/list'
+                       }
+                    项目路由配置实例：
+                           {
+                               path: '/',
+                               component: Layout,
+                               redirect: '/dashboard',
+                               children: [
+                                      {
+                                          path: 'dashboard',
+                                          component: () => import('@/views/dashboard/index'),
+                                          name: 'Dashboard',
+                                          meta: { title: '首页', icon: 'dashboard', affix: true }
+                                      }
+                               ]
+                           },
+                          {
+                              path: '/custermer',
+                              component: Layout,
+                              redirect: '/custermer',
+                              children: [
+                                      {
+                                          path: 'custermer',
+                                          component: () => import('@/pages/custermer/Custermer'),
+                                          name: 'custermer',
+                                          meta: { title: '顾客管理', icon: 'documentation', affix: true }
+                                      }
+                              ]
+                          },
+                          ........
+	（4）项目配置
+		src
+		       assets	图片
+		       components	组件
+		       http	                自己封装的axios，用于请求
+		       icons	                图标
+		       layout	页面布局
+		       router	vue页面路由所在，控制页面跳转。
+		       store	                状态管理机，页面中的数据调用，一处声明，处处使用。
+		       views	                页面
+		       pages	新建自己的页面管理
+		package.json     node项目配置文件
+		node_modules   第三方依赖存放地点
+	（5）更改基本配置信息
+	          侧边导航栏logo，地址栏的标签页展示
+		src/settings.js 
+	          侧边栏logo后的名称
+		src/layout/Sidebar/Logo
+	          登录页面的信息
+		src/views/login/index.vue
+	          其它配置信息，比如主色调
+		src/style/variables.scss
+                 （6）页面新增
+                          在src目录下新建pages文件夹，里面分别添加
+三、家政服务平台（顾客App）
+      1、技术栈:vue、vuex、vue-ruoter、axios、vant等
+      2、项目搭建
+               （1）新建项目，安装vue、vuex、vue-ruoter以及vant组件库以及常用组件库
+	       //新建项目
+                        vue create jz-customer
+                       //进入项目目录
+                         cd jz-customer
+                       //安装依赖
+                         cnpm install
+                      //安装组件
+                         cnpm install axios qs --save
+                         vue add vant（安装组件库）
+                      //本地开发 启动项目
+                         npm run serve
+                （3）路由配置（在文件src/router/index.js中）
+                        项目路由配置实例：
+                            {
+                                   path: '/manager',
+                                   name: 'manager',
+                                   component: Manager,
+                                   beforeEnter: (to, from, next) => {  //属于路由自己的拦截器
+                                      let token = getToken();
+                                      if(token){
+                                          // 查询info
+                                          store.dispatch('user/info',token)
+                                          .then(()=>{
+                                               // 当获取万用户信息之后才允许跳转
+                                               next();
+                                           })
+                                      } else {
+                                           Toast("token失效")
+                                           // 跳转到登录
+                                           next({path:'/login'})
+                                       }
+                                  },
+                                  children:[{
+                                       path: 'home',
+                                       component: Home,
+                                     },{
+                                       path: 'money',
+                                       component: Money
+                                     },{
+                                       path: 'recharge',
+                                       component: Recharge
+                                     },{
+                                       path: 'withdraw',
+                                       component: Withdraw
+                                     },
+                                       ........
+                                      {
+                                        path: 'order_details',
+                                        component: Details,
+                                     }]
+                                 }
+	（4）项目配置
+	               src
+		       assets	图片
+		       components	组件
+		       http	                自己封装的axios，用于请求
+		       icons	                图标
+		       layout	页面布局
+		       router	vue页面路由所在，控制页面跳转。
+		       store	                状态管理机，页面中的数据调用，一处声明，处处使用。
+		       views	                页面
+		package.json     node项目配置文件
+		node_modules   第三方依赖存放地点
+四、家政服务平台（员工App）
+ 1、技术栈:vue、vuex、vue-ruoter、axios、vant等
+      2、项目搭建
+               （1）新建项目，安装vue、vuex、vue-ruoter以及vant组件库以及常用组件库
+	       //新建项目
+                        vue create jz-waiter
+                       //进入项目目录
+                         cd jz-waiter
+                       //安装依赖
+                         cnpm install
+                      //安装组件
+                         cnpm install axios qs --save
+                         vue add vant（安装组件库）
+                      //本地开发 启动项目
+                         npm run serve
+                （3）路由配置（在文件src/router/index.js中）
+                        项目路由配置实例：
+                            {
+                                   path: '/manager',
+                                   name: 'manager',
+                                   component: Manager,
+                                   beforeEnter: (to, from, next) => {  //属于路由自己的拦截器
+                                      let token = getToken();
+                                      if(token){
+                                          // 查询info
+                                          store.dispatch('user/info',token)
+                                          .then(()=>{
+                                               // 当获取万用户信息之后才允许跳转
+                                               next();
+                                           })
+                                      } else {
+                                           Toast("token失效")
+                                           // 跳转到登录
+                                           next({path:'/login'})
+                                       }
+                                  },
+                                  children:[{
+                                           path: 'home',
+                                           component: Home,
+                                       },{
+                                            path: 'order',
+                                            component: Order,
+                                       },{
+                                             path: 'user',
+                                             component: User,
+                                       },
+                                       .......
+                                       {
+                                             path: 'order_conform',
+                                             component: OrderConform
+                                       }]
+                               }
+	（4）项目配置
+	               src
+		       assets	图片
+		       components	组件
+		       http	                自己封装的axios，用于请求
+		       icons	                图标
+		       layout	页面布局
+		       router	vue页面路由所在，控制页面跳转。
+		       store	                状态管理机，页面中的数据调用，一处声明，处处使用。
+		       views	                页面
+		package.json     node项目配置文件
+		node_modules   第三方依赖存放地点

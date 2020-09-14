@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .outer {
+        width: 500px;
+        height: 500px;
+        background-color: aqua;
+      }
+      .inner {
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="outer" @click="toouterClick">
+        <!-- <div class="inner" @click.stop="toinnerClick"></div> -->
+        <div class="inner" @click.once="toinnerClick"></div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: ".app",
+        data: {},
+        methods: {
+          toouterClick() {
+            alert("gosina");
+          },
+          toinnerClick() {
+            alert("nedao");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

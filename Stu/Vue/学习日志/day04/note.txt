@@ -1,0 +1,199 @@
+Vue  day  04
+
+监听属性
+    watch
+         监听数据的变化从而触发某个方法
+
+         <input type="text" v-model="msg"/>
+         data:{
+             msg: "",
+             form: {
+                 username: "",
+             }
+         }
+         watch:{
+             msg:function(newMsg,oldMsg){
+                 this.test()
+             }
+             深度监听,form有任意一个属性发生改变那么就触发监听
+             form:{
+                 handle:function(new,old){
+
+                 }
+                 deep:true,
+             }
+             监听form中的username属性
+             "form.username":fucntion(){
+
+            }
+         }
+         methods:{
+             test(){
+                 console.log(this.msg),
+             }
+         }
+
+组件
+   重复的部分提取出来，进行封装
+
+局部注册
+      let user = {
+            template:``
+        }
+
+        let userinfo = {
+            template:`
+                <div>
+                    引入user组件
+                    <user></user>
+                </div>
+            `,
+            components:{
+                'user':user
+            }
+        }
+
+        new Vue({
+            components:{
+                'userinfo':userinfo
+            }
+        })
+
+全局注册
+      Vue.component('组件名'，{
+          template:``,容器
+          组件的data必须是函数
+          data(){
+              return{
+
+              }
+          }
+          methods:{
+
+          }
+      })
+
+父子级组件传值
+    父级能够向子级传数据,反之不可以
+        子级可以向父级映射消息状态
+
+        <div data='你好' @test='test' :title='true'>
+        
+        </div>
+
+        子组件
+          Vue.component('组件名',{
+            template:`
+                <div @click='test'></div>
+            `,  容器
+            组件的data必须要昂是函数
+            data(){
+                return {
+
+                }
+            },
+            props:{
+                data:String,
+                title:String
+            }
+            methods:{
+                test(){
+                    this.$emit('test')
+                }
+            }
+        })
+
+        new Vue({
+            methods:{
+                test(){
+
+                }
+            }
+        })  
+
+
+普通插槽
+     允许在调用子组件的时候，给我们的子组件传递模板
+      <div id="app">
+      <briup> 
+      <template> hello world </template>
+      </briup>
+    </div>
+    <script>
+      Vue.component("briup", {
+        template: `
+            <div>
+                //普通插槽
+                <slot></slot>
+                </div>`,
+      });
+
+具名插槽
+    每一个插槽命名（name）
+    在父组件调用
+
+作用域插槽
+    如果想要用父组件给子组件传递模板的时候，使用数据
+    Vue.component("briup", {
+        template: `
+            <div>
+                <slot v-bind:user='user'></slot>
+                </div>
+                `,
+        data() {
+          return {
+            username: "tom",
+            age: 12,
+          };
+        },
+      });
+
+
+作用域插槽
+    如果想要在父组件给子组件传递模板的时候使用子组件data中的数据
+    <briup>
+        
+        <template v-slot:default='user'></template>
+    </briup>
+
+    Vue.component('briup',{
+            template:`
+                <div>
+                    <div>
+                        <slot v-bind:user='user'></slot>     
+                    </div>   
+                    
+                </div>
+            `,
+            data(){
+                return{
+                    user:{
+                        username:'tom',
+                        age:12
+                    }
+                }
+            }
+
+        })
+
+混入
+混入对象
+let minxin = {
+    data(){
+        return {
+            msg:''
+        }
+    }
+}
+将混入对象导入组件
+new Vue({
+    el:'',
+    mixins:[minxin]
+})
+注意:
+    如果混入对象的属性名和组件中的属性名有重复,那么会合并,并且组件的值生效
+    如果混入对象的方法和组件的方法有重名现象,那么组件的方法生效
+    
+
+
+

@@ -1,0 +1,49 @@
+是用vuex避免在组件中发请求
+一个组件对用一个状态管理机（vuex）
+
+组件中
+import {mapState,mapAction,mapGetters} from 'vuex'
+namespace = true
+state：{
+    arr:[],
+    相当于data，把可能多个组件都要用到的数据，放入state中进行维护
+    使用
+        在组件
+        computed:{
+            ...mapState('user',['arr'])
+        }
+        访问（不可以直接修改）
+        this.arr
+}
+
+
+getters：{
+    computed，针对state中的数据进行一系列的操作
+
+    arr:state => return
+    arr.toString
+
+    computed:{
+        ...mapGetters('user',['arr'])
+    }
+}
+
+
+ mutations：{
+     突变，处理同步请求
+     mutations是改变state状态的唯一途径
+     say(state,data){
+         state.
+     }
+ }
+
+
+
+actions：{
+    处理异步请求，调用突变   context对象拥有state对象所有的方法属性
+    async test(context,data){
+        let res = await
+        axios.post()
+        context.commit('say',res)
+    }
+  }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+        <input type="text" v-model="username"></input>
+    </div>
+    <script>
+      let vm = new Vue({
+        el: ".app",
+        data: {
+          username:"",
+        },
+        //监听属性
+        watch: {
+            username:function(newName,oldName) {
+                console.log(newName,'newName')
+                console.log(oldName,'oldName')
+                this.search(newName)
+            }
+        },
+        methods: {
+            //筛选用户数据
+            search(item){
+                console.log(item)
+            }
+        },
+      });
+    </script>
+  </body>
+</html>

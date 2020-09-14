@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <briup-ltf></briup-ltf>
+    </div>
+    <script>
+      Vue.component("briup-ltf", {
+        template: `
+            <div :style='outerStyle'>
+                hello
+                </div>
+                `,
+        data() {
+          return {
+            outerStyle: {
+              height: "50px",
+              backgroundColor: "pink",
+              borderRadius: "5px",
+              textAlign: "center",
+            },
+          };
+        },
+      });
+      new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

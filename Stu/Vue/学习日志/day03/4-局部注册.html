@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      //局部注册
+      let info = {
+        template: `
+            <div>这是info组件</div>
+            `,
+      };
+      //在user组件中调用info
+      let user = {
+        template: `
+            <div>
+                <info>
+                    </info>
+                    </div>
+            `,
+        components: {
+          info: info,
+        },
+      };
+      new Vue({
+        el: "#app",
+
+        data: {},
+        components: {
+          user: user,
+        },
+      });
+    </script>
+  </body>
+</html>

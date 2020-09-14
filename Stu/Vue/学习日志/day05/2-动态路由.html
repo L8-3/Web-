@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.4.3/vue-router.min.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      html,
+      body,
+      #app {
+        width: 100%;
+        height: 100%;
+      }
+      .header {
+        width: 100%;
+        height: 70px;
+        background-color: black;
+      }
+      .left {
+        width: 100px;
+        height: calc(100% - 70px);
+        background-color: pink;
+        float: left;
+      }
+      .right {
+        width: calc(100% - 100px);
+        height: calc(100% - 70px);
+        background-color: purple;
+        float: left;
+      }
+      .left > div {
+        width: 100%;
+        height: 30px;
+        border-bottom: 1px solid #fff;
+        text-align: center;
+        line-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="header"></div>
+      <div class="left">
+        <div>
+          <router-link to="/user">用户管理</router-link>
+        </div>
+        <div>
+          <router-link to="/article/1">文章管理</router-link>
+        </div>
+        <div>
+          <router-link to="/article/2">文章管理</router-link>
+        </div>
+      </div>
+      <div class="right">
+        <router-view></router-view>
+      </div>
+    </div>
+    <script>
+      //组件
+      let user = {
+        template: `
+            <div>用户管理模块</div>
+            `,
+      };
+      let article = {
+        template: `
+            <div>文章管理模块
+                {{$route.params}}</div>
+            `,
+        //     路由的监听
+        // watch: {
+        //   $route(to, from) {
+        //     console.log(to);
+        //     console.log(from);
+        //   },
+        // },
+
+        //导航守卫
+        beforeRouteUpdate(to, from, next) {
+          console.log(to);
+          console.log(from);
+          next();
+        },
+        created() {
+          alert(this.$route.params.id);
+        },
+      };
+      //路由对象
+      let router = new VueRouter({
+        routes: [
+          {
+            path: "/user",
+            component: user,
+          },
+          {
+            path: "/article/:id",
+            component: article,
+          },
+        ],
+      });
+      new Vue({
+        el: "#app",
+        router, //注册路由
+        data: {},
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+路由的类型
+    history
+    hash    url后拼接#
+
+启动项目 
+   npm run serve 
+   npm run start
+   npm run dev
+
+vue项目  vue
+打包
+    npm run build
+    npm run build:prod
+    取决于package.jason文件
+
+template 
+   只能有一个子元素 
+
+模块化的vue项目 集成elementui组件库
+   npm i element-ui -S
+
+axios    npm install --save axios
+     ajax    jq
+     axios   是单纯的ajax框架
+     所占容量比较小，比较符合mvvm开发模式
+     默认请求方式get
+     默认请求类型json格式  通过Content - type :'application/json'
+     对请求的返回结果进行二次封装
+     axios中集成promise
+
+       eg:  {status: 200,total:20,page}
+             //二次封装
+             {
+                status: 200,
+                data: {status: 200,total:20,page}
+             }
+
+
+ ajax 
+     默认请求方式get    用params：         post请求用data属性名
+     默认请求类型表单格式 / 查询字符串
+     
+     ajax({
+        url,
+        methods,
+        data:obj,
+
+     })
+
+     axios({
+        url,
+        methods,
+        header:{
+           Content-Type: "www-xx"
+        }
+        data:$.param(obj)  //转换查询字符串
+     })
+
+    qs 做转换
+        obj 
+        qs.stringify(obj)  //转换查询字符串
+
+npm install --save qs

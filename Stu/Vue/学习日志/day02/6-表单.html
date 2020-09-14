@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+    用户名：<input type="text" v-model="username"></input>
+          <br>
+    性别：<input type='radio' value ="男" v-model="gender">男
+          <input type='radio' value = "女" v-model="gender">女
+          <br>
+    兴趣爱好：<input type='checkbox' value ="篮球" v-model="hobby">篮球
+             <input type='checkbox' value ="网球" v-model="hobby">网球
+             <input type='checkbox' value ="羽毛球" v-model="hobby">羽毛球
+             <input type='checkbox' value ="乒乓球" v-model="hobby">乒乓球
+    <br>
+    {{address}}地址：<select v-model="address">
+        <option v-for="item in adr" :key='item.id' :value="item.name">{{item.name}}</option>
+    </select>           
+    </div>
+    <script>
+      new Vue({
+        el: ".app",
+        data: {
+            username:'gusina',
+            gender:'',
+            hobby:[],
+            address:'',
+            adr:[{
+                id:1,
+                name:'山西'
+            },{
+                id:2,
+                name:'江苏'
+            },{
+                id:3,
+                name:'北京'
+            }]
+        },
+
+    
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+Vue day 03
+
+计算属性
+    computed
+        一般指得是对data中原有的数据计算后返回结果，可以当作方法使用
+        只有当计算属性的依赖发生改变，那么计算属性才会重新执行
+
+监听属性
+    input  change事件
+    data:{
+                msg:'',
+                form:{}
+            }
+        监听,如果msg的值发生改变,那么触发监听
+        watch:{
+            msg:function(new,old){
+
+            },
+            form:{
+                handler:function(new,old){
+
+                },
+                深度监听
+                deep:true
+            }
+     }
+
+
+组件
+   组件库
+   父组件会给子组件传递数据（prop），子组件会通过事件向父组件传递消息 this.$emit

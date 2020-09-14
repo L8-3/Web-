@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <style>
+      #one {
+        background-color: pink;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <!-- {{msg}} {{name}} -->
+      <!-- 双向数据绑定 -->
+      <!-- <input type="text" v-model="name" /> -->
+      <!-- <div v-html="text"></div> -->
+      <!-- <div v-bind:id="text" id="one">孤斯呐</div> -->
+      <!-- <button v-bind:disabled="bo">讷道</button> -->
+      <!-- {{num + 1}} -->
+      {{num>5?'大于5':'小于5'}}
+      <div v-bind:id='"my"+id'>22</div>
+      <!-- <div v-on:click="say()">点击</div> -->
+      <div @click="say()">点击</div>
+    </div>
+    <script>
+      let vm = new Vue({
+        el: ".main", //指定模板
+        //生命周期尽量不用箭头函数，影响this的指向
+        beforeCreate() {
+          console.log("beforeCreate");
+        },
+        created() {
+          console.log("created");
+        },
+        beforeMount() {
+          console.log("beforeMount");
+        },
+        mounted() {
+          console.log("mounted");
+        },
+        beforeUpdate() {
+          console.log("beforeUpdate");
+        },
+        updated() {
+          console.log("updated");
+        },
+
+        data: {
+          num: 10,
+          bo: false,
+          id: "one",
+          msg: "hello",
+          name: "",
+          text: "<h1>这是一段测试文字</h1>",
+        },
+        methods: {
+          say() {
+            console.log("say");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

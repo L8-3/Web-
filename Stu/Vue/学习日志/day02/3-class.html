@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <style>
+      .one {
+        height: 500px;
+        width: 500px;
+        background-color: purple;
+      }
+      .text {
+        color: pink;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- <div :class="{one:isTrue,text:hasText}">Goooo</div> -->
+      <!-- <div :class="obj">Goooo</div> -->
+      <div :class="[one,text]">Goooo</div>
+    </div>
+    <script>
+      new Vue({
+        el: ".app",
+        data: {
+          one: "one",
+          text: "text",
+          obj: {
+            one: true,
+            text: true,
+          },
+          isTrue: true,
+          hasText: true,
+        },
+      });
+    </script>
+  </body>
+</html>

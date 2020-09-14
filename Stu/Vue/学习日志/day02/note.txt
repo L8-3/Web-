@@ -1,0 +1,93 @@
+Vue day 02
+
+m <---> vm <---> v
+
+m 数据层 v 视图 vm 做DOM监听  数据驱动 c 控制台
+
+三种方式引入：
+cdn加速器引入
+npm
+vue-cli 脚手架 集成企业级项目
+
+1.vue的八个生命周期
+  beforeCreate   （页面的整个生命周期中只执行一次）
+    属性初始化，事件初始化 不能直接访问data中属性，method中的方法
+  created  
+    vue数据的注入及数据监听操作，实例创建完毕，可以进行数据访问
+  beforeMount
+    数据挂载之前，判断当前的实例应用于哪个模板，但是此时的数据不能给当前的模板使用 
+  mounted
+    数据挂载完成，把数据挂载到模板中，可以把数据应用于模板中
+  berforeUpdate
+    更新虚拟的dom节点  虚拟dom更新之前 (可能执行多次)
+  updated
+    完成了页面的重新渲染  更新完成之后  (可执行多次)
+  beforeDestroy
+    销毁之前，还可以使用实例对象
+  Destroy
+    销毁之后
+
+2.插值
+  v-text  与{{}}功能相同
+    把数据以文本形式渲染在页面中
+  v-html
+    会对标签进行解析，解析后应用到页面
+  v-bind
+    绑定属性 简写形式 ：+属性名  eg： ：style   ：title
+    :url = '"http://"+url'
+  js表达式  
+  {{num + 10}}   
+  {{num？yes：no}}  
+  不可以使用if else
+  v-once
+    只在第一次有效
+  v-on
+    绑定事件  @click  @foucs
+  v-if
+    如果不满足条件，那么节点在页面中不进行渲染，dom树中没有这个节点
+    条件渲染   v-if可以为表达式
+    v-else     只有当v-if不满足条件，才会执行v-else
+    v-else-if   逻辑判断
+  v-show
+    如果不满足条件，那么节点在页面中不进行渲染，dom树中有这个节点  display:none;
+  v-for  
+    循环渲染  比v-if优先级高
+
+    遍历数组
+        item是数组项  index数组的索引  key:代表唯一
+        <div v-for="(item,indax)in arr" :key="index + 1"></div>
+
+    遍历对象
+        value是属性值
+        name是属性名   index：索引
+        <div v-for="(value,name,index)in obj"></div>    
+  class 
+      :class="{one:isTrue}"
+      :class = "obj"
+
+      data:{
+        obj:{
+            color:xx,
+        }
+    }
+
+      :class = "[属性名]"//每个属性名代表一个类名
+
+  style
+      表示行内样式
+      ：style = "{color:属性名，fontSize:属性名}"  //不识别- 驼峰命名
+      ：style=‘obj’
+      :style='[]'
+
+创建表单
+<form v-model='userForm'>
+<input type="text" v-model='userForm.hobby'>  hobby必须为数组  多选数据为数组，下拉框同样
+
+双向数据绑定
+ v-model
+
+    {
+        name:mmm,
+        age:'',
+        test:[{[{},{}]},{},{}]
+    }

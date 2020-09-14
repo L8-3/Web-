@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <style>
+      .main > div {
+        width: 800px;
+        height: 800px;
+        background-color: pink;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <!-- 条件渲染 -->
+      <div v-if="isShow">v-if</div>
+      <!-- 循环渲染 -->
+      <ul>
+        <li v-for="item in arr" :key="item.id">{{item}}</li>
+        <li v-for="item in arr" :key="item.id">{{item.id}}/{{item.name}}</li>
+      </ul>
+    </div>
+    <script>
+      let vm = new Vue({
+        el: ".main",
+        data: {
+          isShow: true,
+          arr: [
+            {
+              id: 1,
+              name: "Tome",
+              age: 11,
+            },
+            {
+              id: 2,
+              name: "To",
+              age: 14,
+            },
+            {
+              id: 5,
+              name: "Tomm",
+              age: 15,
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

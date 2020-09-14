@@ -1,0 +1,127 @@
+插槽
+普通插槽
+    <div id='app'>
+    <user>
+    <template>
+    hello world
+    </template>
+    </user>
+    </div>
+    let user {
+        template:`
+        <div>
+        <slot></slot>
+        </div>
+        `,
+    }
+
+具名插槽
+    <div id='app'>
+    <user>
+    <template v-slot:first>
+    hello
+    </template>
+    <template v-slot:second>
+    world
+    </template>
+    </user>
+    </div>
+    let user {
+        template:`
+        <div>
+        <slot name="first"></slot>
+        <slot name="second"></slot>
+        </div>
+        `,
+    }
+
+作用于插槽
+    <div id='app'>
+    <user>
+    <template v-slot:default="msg">
+    {{msg}}
+    </template>
+    </user>
+    </div>
+    let user {
+            template:`
+            <div>
+            <slot v-bind:msg="msg"></slot>
+            </div>
+            `,
+            data() {
+                return {
+                    msg:'hello world',
+                }
+            }
+        }
+
+混入
+    mixin
+    混入对象
+    let mixin = {
+        template:``,
+        data() {
+            return {
+
+            }
+        },
+        methods:{
+
+        }
+    }
+    new Vue({
+        mixins:[mixin]
+    })
+    注意:
+    如果混入对象的属性名和组件中的属性名有重复,那么会合并,并且组件的值生效
+    如果混入对象的方法和组件的方法有重名现象,那么组件的方法生效
+
+自定义指令
+    v-if
+    v-for
+
+    全局注册
+        Vue.directive('',function(el))
+    局部注册
+        directive:{
+            focuc:{
+
+            }
+        }
+
+过滤器
+    全局注册
+        Vue.filter()
+        日期处理函数，很多页面会用
+        最好使用全局注册
+    局部注册
+    filter:{ 
+
+    }
+
+渲染函数
+    render
+
+vue全家桶
+    vue + vue-router + vuex
+             路 由
+
+vue-router
+    引用方式
+        1.cdn 引入链接
+        2.npm 进行安装
+            npm install vue-router -save
+            导入使用
+            import vueRouter from 'vue-router'
+            Vue.use(vueRouter)
+
+  ES6
+    导出 export    export default
+    导入  import xx from ''
+
+  commentJS
+    导出
+        export.module = ''
+    导入 
+        let path = require('path') npm install

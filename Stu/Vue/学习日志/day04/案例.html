@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- 引入jq -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      .btn {
+        margin-bottom: 10px;
+      }
+      .edit,
+      .del {
+        cursor: pointer;
+      }
+      .edit {
+        color: green;
+      }
+      .del {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="btn">
+        <el-button size="small" type="primary" @click="toAdd">新增</el-button>
+      </div>
+      <div class="table">
+        <el-table size="small" border :data="article" style="width: 100%">
+          <el-table-column prop="id" label="编号" align="center" width="180">
+          </el-table-column>
+          <el-table-column prop="title" align="center" label="标题" width="180">
+          </el-table-column>
+          <el-table-column prop="readtimes" align="center" label="阅读次数">
+          </el-table-column>
+          <el-table-column prop="publishtime" align="center" label="发布时间">
+          </el-table-column>
+          <el-table-column align="center" width="200" label="操作">
+            <template v-slot="scope">
+              <span class="edit" @click="edit(scope.row)">修改</span>
+              <span class="del" @click="del(scope.row)">删除</span>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+      <div class="page">
+        <el-pagination
+          @current-change="pageChange"
+          :page-size="pageSize"
+          layout="prev, pager, next"
+          :total="total"
+        >
+        </el-pagination>
+      </div>
+
+      <!-- 模态框开始 -->
+      <el-dialog title="新增文章" :visible.sync="dialogVisible" width="60%">
+        <!-- 表单开始 -->
+        <el-form ref="form" :model="form" label-width="80px">
+          <el-form-item label="标题">
+            <el-input v-model="form.title"></el-input>
+          </el-form-item>
+        </el-form>
+        <!-- 表单结束 -->
+        <span slot="footer" class="dialog-footer">
+          <el-button size="small" @click="dialogVisible = false"
+            >取 消</el-button
+          >
+          <el-button
+            size="small"
+            type="primary"
+            @click="dialogVisible = false;ltf()"
+            >确 定</el-button
+          >
+        </span>
+      </el-dialog>
+      <!-- 模态框结束 -->
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          dialogVisible: false,
+          page: 0,
+          pageSize: 8,
+          total: "",
+          article: [],
+          form: {
+            title: "",
+            liststyle: true,
+          },
+        },
+        created() {
+          this.loadArticle();
+        },
+        watch: {
+          page: function (newPage, oldPage) {
+            this.loadArticle();
+          },
+        },
+        methods: {
+          edit(data) {
+            this.dialogVisible = true;
+            this.form = data;
+          },
+          // 点击新增按钮,弹出模态框
+          toAdd() {
+            this.dialogVisible = true;
+            this.form.id = undefined;
+          },
+          ltf() {
+            $.post(
+              "http://47.106.244.1:8099/manager/article/saveOrUpdateArticle",
+              this.form,
+              (res) => {
+                this.loadArticle();
+              }
+            );
+          },
+          // 删除
+          del(data) {
+            // console.log(data)
+            $.get(
+              "http://47.106.244.1:8099/manager/article/deleteArticleById?id=" +
+                data.id,
+              (res) => {
+                this.loadArticle();
+              }
+            );
+          },
+          // 当当前页改变的时候
+          pageChange(val) {
+            // console.log(val)
+            this.page = val - 1;
+            // this.loadArticle()
+          },
+          // 加载文章
+          loadArticle() {
+            let obj = {
+              page: this.page,
+              pageSize: this.pageSize,
+            };
+            // console.log(obj)
+            $.get(
+              "http://47.106.244.1:8099/manager/article/findArticle",
+              obj,
+              (res) => {
+                // console.log(res)
+                this.total = res.data.total;
+                this.article = res.data.list;
+              }
+            );
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

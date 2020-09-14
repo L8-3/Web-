@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <briup>
+        <template v-slot:default="user">{{user.user.username}}</template>
+      </briup>
+    </div>
+    <script>
+      Vue.component("briup", {
+        template: `
+            <div>
+                <slot v-bind:user='user'></slot>
+                </div>
+                `,
+        data() {
+          return {
+            user: {
+              username: "tom",
+              age: 12,
+            },
+          };
+        },
+      });
+      new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

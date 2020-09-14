@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+  </head>
+  <body>
+    <!--此处的div是一个容器-->
+    <div class="container">
+      <!-- 
+            v-on 绑定事件
+            click: 事件类型
+            v-bind 绑定属性
+            v-if  判断条件
+            v-for
+            v-html
+            v-show
+        -->
+      <div @click="say">{{msg}}</div>
+      <!-- {{arr}} -->
+      <div v-if="isShow">{{msg}}</div>
+      <button @click="change">{{btnText}}</button>
+    </div>
+    <script>
+      // vm 是 Vue 的实例
+      let vm = new Vue({
+        el: ".container", //指定模板
+        data: {
+          //数据
+          isShow: true,
+          btnText: "隐藏",
+          msg: "hello world",
+          // arr: [
+          //   { name: "terry", age: 12 },
+          //   { name: "tom", age: 13 },
+          // ],
+        },
+        methods: {
+          change() {
+            if (this.isShow == true) {
+              this.isShow = false;
+              this.btnText = "显示";
+            } else {
+              this.isShow = true;
+              this.btnText = "隐藏";
+            }
+          },
+          say() {
+            console.log("这是一个点击方法");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
